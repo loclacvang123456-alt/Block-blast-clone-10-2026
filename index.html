@@ -8,6 +8,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- GameDistribution SDK Integration -->
+  <script>
+    window["GD_OPTIONS"] = {
+      gameId: "00aa44d45eb5429cb2bb544f8e3e022a",
+      onEvent: function (event) {
+        if (window.onGameDistributionEvent) {
+          window.onGameDistributionEvent(event);
+        }
+      }
+    };
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://html5.api.gamedistribution.com/main.min.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, "script", "gamedistribution-jssdk");
+  </script>
 </head>
 <body>
   <div id="game-container">
@@ -71,26 +91,6 @@
       <span>Drag &amp; drop blocks to clear rows and columns!</span>
     </footer>
   </div>
-
-  <!-- GameDistribution SDK Integration -->
-  <script>
-    window["GD_OPTIONS"] = {
-      gameId: "00aa44d45eb5429cb2bb544f8e3e022a",
-      onEvent: function (event) {
-        if (window.onGameDistributionEvent) {
-          window.onGameDistributionEvent(event);
-        }
-      }
-    };
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://html5.api.gamedistribution.com/main.min.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    })(document, "script", "gamedistribution-jssdk");
-  </script>
 
   <script type="module" src="./game.js"></script>
 </body>
