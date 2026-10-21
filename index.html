@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>PIXEL BLAST - Retro Block Puzzle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Top Header / Scoreboard -->
+    <header class="game-header">
+      <div class="header-left">
+        <h1 class="game-title">PIXEL BLAST</h1>
+      </div>
+      <div class="header-controls">
+        <button id="btn-sound" class="pixel-btn" title="Toggle Sound" aria-label="Toggle Sound">🔊</button>
+        <button id="btn-restart" class="pixel-btn" title="Restart Game" aria-label="Restart">🔄</button>
+      </div>
+    </header>
+
+    <div class="scoreboard">
+      <div class="score-card">
+        <span class="score-label">SCORE</span>
+        <span id="score-display" class="score-value">0</span>
+      </div>
+      <div class="score-card best">
+        <span class="score-label">BEST</span>
+        <span id="best-score-display" class="score-value">0</span>
+      </div>
+      <div class="score-card combo-box" id="combo-box">
+        <span class="score-label">COMBO</span>
+        <span id="combo-display" class="score-value highlight">0</span>
+      </div>
+    </div>
+
+    <!-- Main Game Viewport (Pixi.js attaches here) -->
+    <div id="canvas-wrapper">
+      <div id="pixi-view"></div>
+      
+      <!-- Overlay for Game Over -->
+      <div id="game-over-modal" class="modal-overlay hidden">
+        <div class="modal-box pixel-border">
+          <h2 class="modal-title flash-text">GAME OVER</h2>
+          <div class="modal-scores">
+            <div class="modal-row">
+              <span>SCORE:</span>
+              <span id="final-score" class="score-highlight">0</span>
+            </div>
+            <div class="modal-row">
+              <span>BEST:</span>
+              <span id="final-best" class="score-highlight">0</span>
+            </div>
+          </div>
+          <div id="new-record-badge" class="badge hidden">✨ NEW RECORD! ✨</div>
+          <div class="modal-actions">
+            <button id="btn-revive" class="pixel-btn revive-btn" title="Watch an ad to clear blocks and keep playing!">
+              <span class="video-badge">▶</span> REVIVE (FREE)
+            </button>
+            <button id="btn-play-again" class="pixel-btn play-again-btn">PLAY AGAIN</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Guide -->
+    <footer class="game-footer">
+      <span>Drag &amp; drop blocks to clear rows and columns!</span>
+    </footer>
+  </div>
+
+  <!-- GameDistribution SDK Integration -->
+  <script>
+    window["GD_OPTIONS"] = {
+      gameId: "00aa44d45eb5429cb2bb544f8e3e022a",
+      onEvent: function (event) {
+        if (window.onGameDistributionEvent) {
+          window.onGameDistributionEvent(event);
+        }
+      }
+    };
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://html5.api.gamedistribution.com/main.min.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, "script", "gamedistribution-jssdk");
+  </script>
+
+  <script type="module" src="./game.js"></script>
+</body>
+</html>

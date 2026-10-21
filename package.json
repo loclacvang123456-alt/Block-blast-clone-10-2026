@@ -1,0 +1,31 @@
+{
+  "name": "block-blast-clone-10-2026",
+  "version": "1.0.0",
+  "description": "A high-fidelity **Block Blast** clone built with **Pixi.js (WebGL/Canvas)** in authentic **16-bit Pixel Art** style, complete with dynamic screen shake, particle debris physics, rising combo chimes, and retro chiptune SFX.",
+  "main": "audio.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "pack": "vite build && powershell Compress-Archive -Path 'dist/*' -DestinationPath 'pixel-blast-gamedistribution.zip' -Force",
+    "preview": "vite preview",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loclacvang123456-alt/Block-blast-clone-10-2026.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/loclacvang123456-alt/Block-blast-clone-10-2026/issues"
+  },
+  "homepage": "https://github.com/loclacvang123456-alt/Block-blast-clone-10-2026#readme",
+  "devDependencies": {
+    "vite": "^8.3.4"
+  },
+  "dependencies": {
+    "pixi.js": "^7.4.2"
+  }
+}
